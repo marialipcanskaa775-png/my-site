@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Электронное учебное пособие - Задачи</title>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: 'Jun';
+            src: url('fonts/ofont.ru_Jun.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .parallax {
+            background-image: url('images/Фон_сайта!.jpg');
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -2;
+        }
+
+        .parallax::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(244, 244, 244, 0.85);
+            z-index: -1;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Jun', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #2F4F4F;
+            font-size: 18px;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background-color: #66CDAA;
+            background-image: url('images/Фон_сайта2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 15px 20px 20px;
+            border-bottom: 5px solid #008080;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(102, 205, 170, 0.7);
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding-bottom: 10px;
+        }
+
+        .header-content h1, 
+        .header-content h2,
+        .header-content p {
+            color: #203A3A;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+            margin: 8px 0;
+        }
+
+        .header-content h1 {
+            margin-top: 0;
+            font-size: 2.8em;
+        }
+
+        .header-content h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .header-content p {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #66CDAA;
+            background-image: url('images/Фон_сайта2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 20px;
+            border-top: 5px solid #008080;
+            color: #2F4F4F;
+            font-size: 1.1em;
+            font-weight: 500;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(102, 205, 170, 0.7);
+            z-index: 0;
+        }
+
+        footer p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            color: #203A3A;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            border: 5px solid #008080;
+            min-height: 700px;
+        }
+
+        nav {
+            width: 250px;
+            border-right: 1px solid #ccc;
+            padding: 20px;
+            font-size: 1.1em;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        nav ul li {
+            margin-bottom: 12px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2F4F4F;
+            display: block;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: #008080;
+        }
+
+        nav ul li strong {
+            color: #008080;
+            font-size: 1.1em;
+        }
+
+        .nav-image {
+            margin-top: 20px;
+            text-align: center;
+            padding: 0;
+            border: none;
+        }
+
+        .nav-image img {
+            max-width: 100%;
+            height: auto;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .nav-image .image-caption {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #2F4F4F;
+            font-style: italic;
+        }
+
+        .nav-search {
+            margin-top: 20px;
+            padding: 0;
+            border: none;
+        }
+
+        .nav-search form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-search input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #66CDAA;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Jun', Arial, sans-serif;
+            color: #2F4F4F;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-sizing: border-box;
+        }
+
+        .nav-search input::placeholder {
+            color: #66CDAA;
+        }
+
+        .nav-search input:focus {
+            outline: none;
+            border-color: #008080;
+            box-shadow: 0 0 5px rgba(0, 128, 128, 0.3);
+        }
+
+        .nav-search button {
+            width: 100%;
+            padding: 12px;
+            background-color: #008080;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Jun', Arial, sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .nav-search button:hover {
+            background-color: #006666;
+        }
+
+        .nav-search button:active {
+            background-color: #004d4d;
+            transform: translateY(1px);
+        }
+
+        #search-results {
+            margin-top: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            background: white;
+            border: 1px solid #66CDAA;
+            border-radius: 4px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            position: relative;
+        }
+
+        main {
+            padding: 25px;
+            flex: 1;
+            font-size: 1.1em;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+            color: #2F4F4F;
+        }
+
+        .task-item {
+            margin-bottom: 25px;
+        }
+
+        .task-header {
+            font-weight: bold;
+            color: #008080;
+            border-bottom: 2px solid #66CDAA;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .task-header:hover {
+            opacity: 0.8;
+            padding-left: 10px;
+        }
+
+        .task-icon {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            font-size: 0.9em;
+            font-weight: normal;
+        }
+
+        .task-item.open .task-icon {
+            transform: rotate(90deg);
+        }
+
+        .task-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            padding-left: 20px;
+        }
+
+        .task-content.open {
+            max-height: 8000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .binary-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .bit {
+            width: 60px;
+            height: 70px;
+            background: #2F4F4F;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .bit-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .bit-weight {
+            font-size: 12px;
+            color: #66CDAA;
+            margin-top: 5px;
+        }
+
+        .bit.on { background: #008080; }
+        .bit.off { background: #2F4F4F; }
+
+        .decimal-result {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f4f4;
+            border-radius: 10px;
+            font-size: 24px;
+        }
+
+        .match-game {
+            display: flex;
+            gap: 80px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .terms-col, .defs-col {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .term-card, .def-card {
+            background: white;
+            border: 2px solid #66CDAA;
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin: 12px 0;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .term-card:hover, .def-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .term-card.selected {
+            background: #ffeaa7;
+            border-color: #fdcb6e;
+            transform: scale(1.02);
+        }
+
+        .term-card.matched, .def-card.matched {
+            background: linear-gradient(135deg, #66CDAA, #5cb89a);
+            border-color: #008080;
+            color: #1a3a3a;
+            cursor: default;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .term-card.matched::after, .def-card.matched::after {
+            content: "✓";
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #008080;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .lines-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .match-wrapper {
+            position: relative;
+        }
+
+        .check-feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .reset-btn {
+            background: #008080;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+            font-size: 1em;
+        }
+
+        .reset-btn:hover {
+            background: #006666;
+            transform: scale(1.02);
+        }
+
+        .logic-sim {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logic-inputs {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .logic-input {
+            text-align: center;
+        }
+
+        .logic-input button {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background: #2F4F4F;
+            color: white;
+            transition: all 0.2s;
+        }
+
+        .logic-input button.active {
+            background: #008080;
+            box-shadow: 0 0 10px #008080;
+        }
+
+        .logic-gate {
+            text-align: center;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 16px;
+            min-width: 150px;
+        }
+
+        .gate-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #008080;
+        }
+
+        .gate-output {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .gate-output.on { color: #28a745; }
+        .gate-output.off { color: #dc3545; }
+
+        .gate-select {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 2px solid #66CDAA;
+            margin-top: 10px;
+        }
+
+        .change {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .change:hover {
+            color: #08fdd8 !important;
+            font-size: 30px !important;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parallax"></div>
+    <div class="content-wrapper">
+        <header>
+            <div class="header-content">
+                <h1>ЭЛЕКТРОННОЕ УЧЕБНОЕ ПОСОБИЕ</h1>
+                <h2>по дисциплине «ИНФОРМАТИКА»</h2>
+                <p>Гуковский строительный техникум "ГСТ" • 09.02.07 "Информационные системы и программирование" • Данцева Кристина Андреевна • 2026г.</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="Программа.html">Программа</a></li>
+                    <li><a href="Темы.html">Темы учебных занятий</a></li>
+                    <li><a href="Практика.html">Практические работы</a></li>
+                    <li><a href="Тесты.html">Тесты</a></li>
+                    <li><strong>▶ Задачи</strong></li>
+                </ul>
+
+                <div class="nav-image">
+                    <img src="images/Помощник.jpg" alt="Помощник">
+                </div>
+
+                <div class="nav-search">
+                    <form id="search-form">
+                        <input id="search-input" placeholder="Поиск по сайту..." type="text">
+                        <button type="submit">
+                            <span>🔍</span>
+                            <span>Найти</span>
+                        </button>
+                    </form>
+                    <div id="search-results"></div>
+                </div>
+            </nav>
+
+            <main>
+                <div class="task-item">
+                    <div class="task-header">
+                        <span class="task-icon">▶</span>
+                        <span class="change">Б</span><span class="change">и</span><span class="change">н</span><span class="change">а</span><span class="change">р</span><span class="change">н</span><span class="change">ы</span><span class="change">й</span>
+                        <span class="change"> </span><span class="change">с</span><span class="change">ч</span><span class="change">ё</span><span class="change">т</span><span class="change">ч</span><span class="change">и</span><span class="change">к</span>
+                    </div>
+                    <div class="task-content">
+                        <p>Кликай на биты, чтобы включать/выключать их. Каждый бит соответствует степени двойки.</p>
+                        <div id="binaryCounter" class="binary-container"></div>
+                        <div class="decimal-result">
+                            <strong>Десятичное значение:</strong> <span id="decimalValue">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <span class="task-icon">▶</span>
+                        <span class="change">С</span><span class="change">о</span><span class="change">е</span><span class="change">д</span><span class="change">и</span><span class="change">н</span><span class="change">и</span>
+                        <span class="change"> </span><span class="change">п</span><span class="change">о</span><span class="change">н</span><span class="change">я</span><span class="change">т</span><span class="change">и</span><span class="change">я</span>
+                    </div>
+                    <div class="task-content">
+                        <p>Кликни на термин, затем на определение, чтобы соединить их.</p>
+                        <div class="match-wrapper" id="matchWrapper" style="position: relative;">
+                            <div class="match-game" id="matchGame">
+                                <div class="terms-col" id="termsList"></div>
+                                <div class="defs-col" id="defsList"></div>
+                            </div>
+                            <canvas id="linesCanvas" class="lines-canvas"></canvas>
+                        </div>
+                        <div class="check-feedback" id="matchFeedback"></div>
+                        <button class="reset-btn" onclick="resetMatchGame()">Сбросить соединения</button>
+                    </div>
+                </div>
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <span class="task-icon">▶</span>
+                        <span class="change">Л</span><span class="change">о</span><span class="change">г</span><span class="change">и</span><span class="change">ч</span><span class="change">е</span><span class="change">с</span><span class="change">к</span><span class="change">и</span><span class="change">й</span>
+                        <span class="change"> </span><span class="change">э</span><span class="change">л</span><span class="change">е</span><span class="change">м</span><span class="change">е</span><span class="change">н</span><span class="change">т</span>
+                    </div>
+                    <div class="task-content">
+                        <p>Выбери логический элемент (И, ИЛИ, НЕ) и настраивай входные сигналы, чтобы увидеть результат.</p>
+                        <div class="logic-sim">
+                            <div class="logic-inputs">
+                                <div class="logic-input">
+                                    <div>Вход А</div>
+                                    <button id="inputA" class="active">1</button>
+                                </div>
+                                <div class="logic-input">
+                                    <div>Вход В</div>
+                                    <button id="inputB" class="active">1</button>
+                                </div>
+                            </div>
+                            <div class="logic-gate">
+                                <div class="gate-name">Элемент</div>
+                                <select id="gateSelect" class="gate-select">
+                                    <option value="AND">И (AND)</option>
+                                    <option value="OR">ИЛИ (OR)</option>
+                                    <option value="NOT">НЕ (NOT) — используется только вход А</option>
+                                </select>
+                                <div class="gate-output off" id="outputValue">0</div>
+                                <div style="font-size:14px; color:#666;">Результат на выходе</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            <p>Автор: Липчанская М.-К. В. | "ГСТ" | 2026г. </p>
+        </footer>
+    </div>
+
+    <script>
+        function initAccordion() {
+            const taskItems = document.querySelectorAll('.task-item');
+            taskItems.forEach(item => {
+                const header = item.querySelector('.task-header');
+                const content = item.querySelector('.task-content');
+                content.classList.remove('open');
+                header.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    content.classList.toggle('open');
+                    item.classList.toggle('open');
+                    if (content.classList.contains('open') && item.querySelector('#linesCanvas')) {
+                        setTimeout(() => drawLines(), 100);
+                    }
+                });
+            });
+        }
+
+        function initBinaryCounter() {
+            const bitsCount = 8;
+            let bits = new Array(bitsCount).fill(0);
+            const container = document.getElementById('binaryCounter');
+            const decimalSpan = document.getElementById('decimalValue');
+            
+            function updateDisplay() {
+                container.innerHTML = '';
+                for (let i = 0; i < bitsCount; i++) {
+                    const weight = Math.pow(2, bitsCount - 1 - i);
+                    const bitDiv = document.createElement('div');
+                    bitDiv.className = `bit ${bits[i] === 1 ? 'on' : 'off'}`;
+                    bitDiv.innerHTML = `
+                        <div class="bit-value">${bits[i]}</div>
+                        <div class="bit-weight">${weight}</div>
+                    `;
+                    bitDiv.addEventListener('click', () => {
+                        bits[i] = bits[i] === 1 ? 0 : 1;
+                        updateDisplay();
+                    });
+                    container.appendChild(bitDiv);
+                }
+                let decimal = 0;
+                for (let i = 0; i < bitsCount; i++) {
+                    if (bits[i] === 1) decimal += Math.pow(2, bitsCount - 1 - i);
+                }
+                decimalSpan.textContent = decimal;
+            }
+            updateDisplay();
+        }
+
+        const matchData = {
+            "Алгоритм": "Последовательность действий для решения задачи",
+            "Программа": "Набор инструкций для компьютера",
+            "Переменная": "Область памяти с именем для хранения данных",
+            "Цикл": "Многократное повторение блока команд"
+        };
+        
+        let selectedTerm = null;
+        let matchedPairs = [];
+        
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+        
+        function drawLines() {
+            const canvas = document.getElementById('linesCanvas');
+            const wrapper = document.getElementById('matchWrapper');
+            if (!canvas || !wrapper) return;
+            const rect = wrapper.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (matchedPairs.length === 0) return;
+            const terms = document.querySelectorAll('.term-card');
+            const defs = document.querySelectorAll('.def-card');
+            matchedPairs.forEach(pair => {
+                let termEl = null, defEl = null;
+                for (let t of terms) if (t.dataset.term === pair.term && t.classList.contains('matched')) { termEl = t; break; }
+                for (let d of defs) if (d.dataset.def === pair.def && d.classList.contains('matched')) { defEl = d; break; }
+                if (termEl && defEl) {
+                    const termRect = termEl.getBoundingClientRect();
+                    const defRect = defEl.getBoundingClientRect();
+                    const wrapperRect = wrapper.getBoundingClientRect();
+                    const startX = termRect.right - wrapperRect.left - 5;
+                    const startY = termRect.top + termRect.height / 2 - wrapperRect.top;
+                    const endX = defRect.left - wrapperRect.left + 5;
+                    const endY = defRect.top + defRect.height / 2 - wrapperRect.top;
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);
+                    const cp1x = startX + (endX - startX) * 0.3;
+                    const cp1y = startY - 10;
+                    const cp2x = endX - (endX - startX) * 0.3;
+                    const cp2y = endY - 10;
+                    ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, endX, endY);
+                    ctx.strokeStyle = '#008080';
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    const angle = Math.atan2(endY - startY, endX - startX);
+                    const arrowSize = 10;
+                    ctx.beginPath();
+                    ctx.moveTo(endX, endY);
+                    ctx.lineTo(endX - arrowSize * Math.cos(angle - Math.PI / 6), endY - arrowSize * Math.sin(angle - Math.PI / 6));
+                    ctx.lineTo(endX - arrowSize * Math.cos(angle + Math.PI / 6), endY - arrowSize * Math.sin(angle + Math.PI / 6));
+                    ctx.fillStyle = '#008080';
+                    ctx.fill();
+                }
+            });
+        }
+        
+        function showErrorFeedback() {
+            const feedback = document.getElementById('matchFeedback');
+            feedback.innerHTML = 'Неверно! Попробуй ещё раз.';
+            feedback.style.backgroundColor = '#f4e6ec';
+            feedback.style.color = '#6b3450';
+            feedback.style.border = '1px solid #c9a0b2';
+            setTimeout(() => {
+                if (matchedPairs.length !== Object.keys(matchData).length) {
+                    feedback.innerHTML = 'Кликни на термин слева, затем на определение справа, чтобы соединить их. Появятся бирюзовые линии!';
+                    feedback.style.backgroundColor = '#e9ecef';
+                    feedback.style.color = '#2F4F4F';
+                    feedback.style.border = 'none';
+                }
+            }, 1800);
+        }
+        
+        function renderMatchGame() {
+            const termsDiv = document.getElementById('termsList');
+            const defsDiv = document.getElementById('defsList');
+            const feedback = document.getElementById('matchFeedback');
+            const matchedDefs = matchedPairs.map(p => p.def);
+            const matchedTermsList = matchedPairs.map(p => p.term);
+            termsDiv.innerHTML = Object.keys(matchData).map(term => `
+                <div class="term-card ${matchedTermsList.includes(term) ? 'matched' : ''}" data-term="${term}">${term}</div>
+            `).join('');
+            let definitions = Object.values(matchData);
+            definitions = shuffleArray([...definitions]);
+            defsDiv.innerHTML = definitions.map(def => `
+                <div class="def-card ${matchedDefs.includes(def) ? 'matched' : ''}" data-def="${def}">${def}</div>
+            `).join('');
+            document.querySelectorAll('.term-card').forEach(el => {
+                if (!el.classList.contains('matched')) {
+                    el.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        document.querySelectorAll('.term-card').forEach(c => c.classList.remove('selected'));
+                        el.classList.add('selected');
+                        selectedTerm = el.dataset.term;
+                    });
+                }
+            });
+            document.querySelectorAll('.def-card').forEach(el => {
+                if (!el.classList.contains('matched')) {
+                    el.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (selectedTerm && matchData[selectedTerm] === el.dataset.def) {
+                            matchedPairs.push({ term: selectedTerm, def: el.dataset.def });
+                            selectedTerm = null;
+                            renderMatchGame();
+                            setTimeout(() => drawLines(), 50);
+                        } else if (selectedTerm) {
+                            showErrorFeedback();
+                            document.querySelectorAll('.term-card').forEach(c => c.classList.remove('selected'));
+                            selectedTerm = null;
+                        }
+                    });
+                }
+            });
+            if (matchedPairs.length === Object.keys(matchData).length) {
+                feedback.innerHTML = 'Отлично! Все понятия правильно соединены!';
+                feedback.style.backgroundColor = '#d4edda';
+                feedback.style.color = '#155724';
+                feedback.style.border = 'none';
+            } else {
+                feedback.innerHTML = 'Кликни на термин слева, затем на определение справа, чтобы соединить их. Появятся бирюзовые линии!';
+                feedback.style.backgroundColor = '#e9ecef';
+                feedback.style.color = '#2F4F4F';
+                feedback.style.border = 'none';
+            }
+            setTimeout(() => drawLines(), 50);
+        }
+        
+        function resetMatchGame() {
+            selectedTerm = null;
+            matchedPairs = [];
+            renderMatchGame();
+        }
+        
+        window.addEventListener('resize', () => setTimeout(() => drawLines(), 100));
+        
+        function initLogicGate() {
+            let a = 1, b = 1;
+            const btnA = document.getElementById('inputA');
+            const btnB = document.getElementById('inputB');
+            const gateSelect = document.getElementById('gateSelect');
+            const outputSpan = document.getElementById('outputValue');
+            function updateGate() {
+                const gate = gateSelect.value;
+                let result = 0;
+                if (gate === 'AND') result = (a === 1 && b === 1) ? 1 : 0;
+                else if (gate === 'OR') result = (a === 1 || b === 1) ? 1 : 0;
+                else if (gate === 'NOT') result = (a === 1) ? 0 : 1;
+                outputSpan.textContent = result;
+                if (result === 1) { outputSpan.classList.add('on'); outputSpan.classList.remove('off'); }
+                else { outputSpan.classList.add('off'); outputSpan.classList.remove('on'); }
+            }
+            btnA.addEventListener('click', () => {
+                a = a === 1 ? 0 : 1;
+                btnA.textContent = a;
+                btnA.classList.toggle('active', a === 1);
+                updateGate();
+            });
+            btnB.addEventListener('click', () => {
+                b = b === 1 ? 0 : 1;
+                btnB.textContent = b;
+                btnB.classList.toggle('active', b === 1);
+                updateGate();
+            });
+            gateSelect.addEventListener('change', updateGate);
+            updateGate();
+        }
+        
+        const siteSearchIndex = {
+            'index.html': {
+                title: 'Главная страница',
+                keywords: ['информатика', 'гуковский', 'гст', 'пособие', 
+                          'учебно-методическое', 'аннотация', 'цель', 'задачи', 'структура',
+                          'информационные системы', 'программирование', 'дисциплина', 'студенты',
+                          'обучение', 'образование', 'техникум', 'строительный'],
+                description: 'Учебно-методическое пособие по информатике для студентов Гуковского строительного техникума'
+            },
+            'Программа.html': {
+                title: 'Программа дисциплины',
+                keywords: ['учебный план', 'рабочая программа', 'тематический план', 
+                          'часы', 'лекции', 'практика', 'самостоятельная работа',
+                          'содержание', 'требования', 'компетенции', 'расписание',
+                          'модули', 'разделы', 'темы', 'объем часов', 'аттестация',
+                          'ИКТ-компетенции', 'алгоритмизация', 'тестирование'],
+                description: 'Рабочая программа дисциплины Информатика: содержание, тематический план, требования'
+            },
+            'Темы.html': {
+                title: 'Темы учебных занятий',
+                keywords: ['теория', 'конспекты', 'презентации', 'слайды', 
+                          'информация', 'компьютер', 'windows', 'linux', 'ос',
+                          'программы', 'офис', 'word', 'excel', 'access', 'powerpoint',
+                          'базы данных', 'sql', 'сети', 'интернет', 'html', 'css',
+                          'javascript', 'алгоритмы', 'структуры данных', 'программирование',
+                          'моделирование', 'графика', 'мультимедиа',
+                          'информация и информационные процессы', 'подходы к измерению информации',
+                          'устройство компьютера', 'кодирование информации', 'системы счисления',
+                          'комбинаторика', 'теория множеств', 'математическая логика',
+                          'компьютерные сети', 'локальные сети', 'поисковые системы',
+                          'облачные сервисы', 'информационная безопасность',
+                          'текстовые процессоры', 'структурированные документы',
+                          'компьютерная графика', 'мультимедиа', 'презентации',
+                          'гипертекст', 'моделирование', 'графы', 'деревья',
+                          'математические модели', 'алгоритмические структуры',
+                          'электронные таблицы', 'сортировка', 'фильтрация', 'формулы', 'функции',
+                          'визуализация данных'],
+                description: 'Лекционные материалы по информатике: теория, конспекты по всем темам курса'
+            },
+            'Практика.html': {
+                title: 'Практические работы',
+                keywords: ['задания', 'упражнения', 'лабораторные', 'решения',
+                          'примеры', 'код', 'программирование', 'python',
+                          'алгоритмы', 'блок-схемы', 'паскаль', 'c++', 'java',
+                          'офисные программы', 'word задания', 'excel задачи',
+                          'access базы', 'сети настройка', 'html верстка', 'css стили',
+                          'компас-3d', 'powerpoint', 'paint',
+                          'Отчёты и документация в Excel',
+                          'Построение графиков функций в Excel',
+                          'Применение финансовых функций в Microsoft Excel',
+                          'Работа в программной среде СУБД',
+                          'Расчётные операции в MS Excel',
+                          'Решение задач оптимального планирования',
+                          'Решение уравнений и систем уравнений в MS Excel',
+                          'Создание и работа с базой данных в MS Excel',
+                          'Анализ и визуализация данных',
+                          'Статистическая обработка данных и построение диаграмм',
+                          'Технология накопления данных и обработки в Excel',
+                          'Создание текстовой веб-страницы на языке HTML',
+                          'Графический редактор создания растровых изображений',
+                          'Создание анимированной графики',
+                          'Графический редактор создания векторного изображения',
+                          'Обработка цифровых растровых изображений в Paint.NET',
+                          'Добавление рисунков и эффектов анимации в презентацию',
+                          'Разработка презентации макеты оформления и разметка',
+                          'Создание интерактивной викторины',
+                          'Создание мультимедийной презентации с использованием триггеров',
+                          'Создание презентации на профессиональную тематику',
+                          'Автоматизация подготовки документов в программе MS Word',
+                          'Использование возможностей текстового процессора',
+                          'Оформление больших документов',
+                          'Слияние документов MS Word',
+                          'Работа с табличными документами',
+                          'Создание списков и таблиц',
+                          'Создание формул и рисунков',
+                          'Создание текстовых документов на компьютере',
+                          'Построение основных чертежных объектов в КОМПАС-3D',
+                          'Построение трехмерных моделей в системе КОМПАС-3D',
+                          'Математические модели в профессиональной области',
+                          'Представление информации в различных системах счисления',
+                          'Решение прикладных задач с использованием теории множеств',
+                          'Решение прикладных задач с применением математической логики',
+                          'Комплектация компьютерного рабочего места',
+                          'Облачные хранилища', 'Яндекс.Диск',
+                          'Примеры работы с поисковыми системами',
+                          'Протоколы TCP/IP', 'Сетевое оборудование',
+                          'Сетевые модели OSI', 'Создание ящика электронной почты'],
+                description: 'Практические задания по информатике: лабораторные работы, упражнения, решения'
+            },
+            'Тесты.html': {
+                title: 'Тесты и контроль',
+                keywords: ['тестирование', 'контрольная', 'опрос', 'экзамен',
+                          'вопросы', 'ответы', 'варианты', 'проверка знаний',
+                          'оценивание', 'зачёт', 'экзамен', 'итоговый контроль',
+                          'промежуточная аттестация', 'тестовые задания', 'quiz',
+                          'входной контроль', 'сертификат', 'информация', 'данные',
+                          'аналоговая форма', 'цифровая форма', 'информационное общество',
+                          'стили Word', 'автоматическое оглавление', 'поля DATE',
+                          'автотекст', 'список иллюстраций', 'слияние Mail Merge',
+                          'перекрёстные ссылки', 'шаблоны документов', 'макросы',
+                          'сквозная нумерация', 'информационная безопасность',
+                          'телемедицина', 'цифровая экономика', 'цифровое неравенство',
+                          'глобализация', 'дистанционное обучение'],
+                description: 'Тесты для контроля знаний по информатике: вопросы, ответы, варианты заданий'
+            },
+            'Задачи.html': {
+                title: 'Интерактивные задачи',
+                keywords: ['задачи', 'упражнения', 'интерактив', 'двоичный счётчик',
+                          'логические элементы', 'алгоритмы', 'соединение понятий',
+                          'двоичная система', 'логика', 'тренажёр', 'практикум',
+                          'биты', 'десятичное значение', 'алгоритм', 'программа',
+                          'переменная', 'цикл', 'логический элемент И', 'логический элемент ИЛИ',
+                          'логический элемент НЕ', 'AND', 'OR', 'NOT', 'входной сигнал',
+                          'двоичный', 'счётчик', 'логический элемент'],
+                description: 'Интерактивные задачи по информатике: двоичный счётчик, логические элементы, соединение понятий'
+            }
+        };
+
+        const synonyms = {
+            'информатика': ['информатика', 'компьютерная наука', 'it', 'айти', 'компьютеры'],
+            'программа': ['программа', 'учебный план', 'курс', 'дисциплина', 'предмет'],
+            'лекции': ['лекции', 'теория', 'конспекты', 'презентации', 'слайды'],
+            'практика': ['практика', 'упражнения', 'лабораторные', 'задания', 'лабы'],
+            'тесты': ['тесты', 'контроль', 'экзамен', 'опрос', 'зачет', 'аттестация'],
+            'методичка': ['методичка', 'методические указания', 'рекомендации', 'инструкции'],
+            'windows': ['windows', 'операционная система', 'ос', 'виндовс', 'windows 10', 'windows 11'],
+            'python': ['python', 'программирование', 'язык программирования', 'питон', 'код'],
+            'базы данных': ['базы данных', 'бд', 'sql', 'данные', 'access', 'mysql'],
+            'html': ['html', 'верстка', 'веб', 'сайт', 'интернет'],
+            'css': ['css', 'стили', 'оформление', 'дизайн'],
+            'задачи': ['задачи', 'упражнения', 'задания', 'примеры', 'тренажёр'],
+            'логика': ['логика', 'логические элементы', 'и', 'или', 'не'],
+            'excel': ['excel', 'электронные таблицы', 'таблицы', 'эксель'],
+            'word': ['word', 'текстовый процессор', 'ворд', 'документы'],
+            'powerpoint': ['powerpoint', 'презентации', 'слайды', 'презентация']
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initAccordion();
+            initBinaryCounter();
+            renderMatchGame();
+            initLogicGate();
+            
+            const searchForm = document.getElementById('search-form');
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                if (!searchTerm) {
+                    searchResults.style.display = 'none';
+                    return;
+                }
+                
+                searchResults.innerHTML = '';
+                searchResults.style.display = 'block';
+                
+                let foundResults = [];
+                
+                for (const [page, data] of Object.entries(siteSearchIndex)) {
+                    let relevance = 0;
+                    let matchedKeywords = [];
+                    
+                    data.keywords.forEach(keyword => {
+                        if (keyword.toLowerCase().includes(searchTerm) || searchTerm.includes(keyword.toLowerCase())) {
+                            relevance += 3;
+                            if (!matchedKeywords.includes(keyword)) {
+                                matchedKeywords.push(keyword);
+                            }
+                        }
+                    });
+                    
+                    if (data.title.toLowerCase().includes(searchTerm)) {
+                        relevance += 5;
+                    }
+                    
+                    if (data.description.toLowerCase().includes(searchTerm)) {
+                        relevance += 2;
+                    }
+                    
+                    for (const [mainTerm, synList] of Object.entries(synonyms)) {
+                        if (synList.some(syn => syn.includes(searchTerm) || searchTerm.includes(syn))) {
+                            if (data.keywords.some(kw => kw.toLowerCase().includes(mainTerm))) {
+                                relevance += 2;
+                                if (!matchedKeywords.includes(mainTerm)) {
+                                    matchedKeywords.push(mainTerm + ' (синоним)');
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (relevance > 0) {
+                        foundResults.push({
+                            page: page,
+                            title: data.title,
+                            description: data.description,
+                            relevance: relevance,
+                            matchedKeywords: matchedKeywords.slice(0, 4)
+                        });
+                    }
+                }
+                
+                foundResults.sort((a, b) => b.relevance - a.relevance);
+                
+                if (foundResults.length > 0) {
+                    foundResults.forEach(result => {
+                        const resultItem = document.createElement('div');
+                        resultItem.style.padding = '12px';
+                        resultItem.style.borderBottom = '1px solid #eee';
+                        resultItem.style.cursor = 'pointer';
+                        resultItem.style.transition = 'background 0.2s';
+                        
+                        let relevanceColor = '#888';
+                        if (result.relevance >= 8) relevanceColor = '#008080';
+                        else if (result.relevance >= 5) relevanceColor = '#66CDAA';
+                        else if (result.relevance >= 3) relevanceColor = '#20B2AA';
+                        
+                        resultItem.innerHTML = `
+                            <div style="font-weight: bold; color: #008080; margin-bottom: 4px; font-size: 16px;">
+                                ${result.title}
+                            </div>
+                            <div style="font-size: 14px; color: #666; margin-bottom: 6px;">
+                                ${result.description}
+                            </div>
+                            <div style="font-size: 12px; color: #888; margin-bottom: 4px;">
+                                <strong>Ключевые слова:</strong> ${result.matchedKeywords.join(', ')}
+                            </div>
+                            <div style="font-size: 11px; color: ${relevanceColor}; margin-top: 4px;">
+                                <strong>Релевантность:</strong> ${result.relevance}/10
+                            </div>
+                        `;
+                        
+                        resultItem.onmouseenter = function() {
+                            this.style.background = '#f0f8ff';
+                            this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                        };
+                        resultItem.onmouseleave = function() {
+                            this.style.background = '';
+                            this.style.boxShadow = '';
+                        };
+                        
+                        resultItem.onclick = function() {
+                            window.location.href = result.page;
+                        };
+                        
+                        searchResults.appendChild(resultItem);
+                    });
+                    
+                    const stats = document.createElement('div');
+                    stats.style.padding = '10px';
+                    stats.style.fontSize = '13px';
+                    stats.style.color = '#666';
+                    stats.style.borderTop = '1px solid #eee';
+                    stats.style.marginTop = '10px';
+                    stats.style.background = '#f9f9f9';
+                    stats.style.borderRadius = '0 0 4px 4px';
+                    stats.innerHTML = `<strong>Найдено:</strong> ${foundResults.length} страниц по запросу "${searchTerm}"`;
+                    searchResults.appendChild(stats);
+                    
+                } else {
+                    searchResults.innerHTML = `
+                        <div style="padding: 30px; text-align: center;">
+                            <div style="font-size: 32px; color: #ccc; margin-bottom: 15px;">🔍</div>
+                            <div style="font-weight: bold; color: #666; margin-bottom: 10px; font-size: 16px;">
+                                По запросу "${searchTerm}" ничего не найдено
+                            </div>
+                            <div style="color: #888; font-size: 14px; margin-bottom: 15px;">
+                                Попробуйте изменить формулировку запроса
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!searchForm.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+            
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    searchResults.style.display = 'none';
+                    this.value = '';
+                }
+            });
+            
+            let searchTimeout;
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                const term = this.value.trim();
+                if (term.length >= 2) {
+                    searchTimeout = setTimeout(() => {
+                        searchForm.dispatchEvent(new Event('submit'));
+                    }, 300);
+                } else {
+                    searchResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
