@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Электронное учебное пособие</title>
+    <style>
+        html {scroll-behavior: smooth;}
+        @font-face {
+            font-family: 'Jun';
+            src: url('fonts/ofont.ru_Jun.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;}
+
+        .parallax {
+            background-image: url('images/Фон_сайта!.jpg');
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: -2;}
+
+        .parallax::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(244, 244, 244, 0.85);
+            z-index: -1;}
+
+        body {
+            margin: 0;
+            font-family: 'Jun', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #2F4F4F;
+            font-size: 18px;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;}
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background-color: #66CDAA;
+            background-image: url('images/Фон_сайта2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 15px 20px 20px;
+            border-bottom: 5px solid #008080;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(102, 205, 170, 0.7);
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding-bottom: 10px;
+        }
+
+        .header-content h1, 
+        .header-content h2,
+        .header-content p {
+            color: #203A3A;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
+            margin: 8px 0;
+        }
+
+        .header-content h1 {
+            margin-top: 0;
+            font-size: 2.8em;
+        }
+
+        .header-content h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .header-content p {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #66CDAA;
+            background-image: url('images/Фон_сайта2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 20px;
+            border-top: 5px solid #008080;
+            color: #2F4F4F;
+            font-size: 1.1em;
+            font-weight: 500;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(102, 205, 170, 0.7);
+            z-index: 0;
+        }
+
+        footer p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            color: #203A3A;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            border: 5px solid #008080;
+            min-height: 700px;
+        }
+
+        nav {
+            width: 250px;
+            border-right: 1px solid #ccc;
+            padding: 20px;
+            font-size: 1.1em;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        nav ul li {
+            margin-bottom: 12px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #2F4F4F;
+            display: block;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: #008080;
+        }
+
+        nav ul li strong {
+            color: #008080;
+            font-size: 1.1em;
+        }
+
+        .nav-image {
+            margin-top: 20px;
+            text-align: center;
+            padding: 0;
+            border: none;
+        }
+
+        .nav-image img {
+            max-width: 100%;
+            height: auto;
+            border: none;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+        .nav-image .image-caption {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #2F4F4F;
+            font-style: italic;
+        }
+
+        .nav-search {
+            margin-top: 20px;
+            padding: 0;
+            border: none;
+        }
+
+        .nav-search form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-search input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #66CDAA;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Jun', Arial, sans-serif;
+            color: #2F4F4F;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-sizing: border-box;
+        }
+
+        .nav-search input::placeholder {
+            color: #66CDAA;
+        }
+
+        .nav-search input:focus {
+            outline: none;
+            border-color: #008080;
+            box-shadow: 0 0 5px rgba(0, 128, 128, 0.3);
+        }
+
+        .nav-search button {
+            width: 100%;
+            padding: 12px;
+            background-color: #008080;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: 'Jun', Arial, sans-serif;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .nav-search button:hover {
+            background-color: #006666;
+        }
+
+        .nav-search button:active {
+            background-color: #004d4d;
+            transform: translateY(1px);
+        }
+
+        #search-results {
+            margin-top: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            background: white;
+            border: 1px solid #66CDAA;
+            border-radius: 4px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            position: relative;
+        }
+
+        main {
+            padding: 25px;
+            flex: 1;
+            font-size: 1.1em;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+            color: #2F4F4F;
+        }
+
+        main h3 {
+            color: #008080;
+            border-bottom: 2px solid #66CDAA;
+            padding-bottom: 8px;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+        }
+
+        main ul, main ol {
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
+
+        main li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 24px;
+            background-color: #008080;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 1.1em;
+        }
+
+        .button:hover {
+            background-color: #006666;
+        }
+
+        .change {
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .change:hover {
+            color: #08fdd8 !important;
+            font-size: 30px !important;
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parallax"></div>
+    
+    <div class="content-wrapper">
+        <header>
+            <div class="header-content">
+                <h1>ЭЛЕКТРОННОЕ УЧЕБНОЕ ПОСОБИЕ</h1>
+                <h2>по дисциплине «ИНФОРМАТИКА»</h2>
+                <p>Гуковский строительный техникум "ГСТ" • 09.02.07 "Информационные системы и программирование" • Данцева Кристина Андреевна • 2026г.</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><strong>▶ Главная</strong></li>
+                    <li><a href="Программа.html">Программа</a></li>
+                    <li><a href="Темы.html">Темы учебных занятий</a></li>
+                    <li><a href="Практика.html">Практические работы</a></li>
+                    <li><a href="Тесты.html">Тесты</a></li>
+                    <li><a href="Задачи.html">Задачи</a></li>
+                </ul>
+                
+                <div class="nav-image">
+                    <img src="images/Помощник.jpg" alt="Помощник">
+                </div>
+                
+                <div class="nav-search">
+                    <form id="search-form">
+                        <input id="search-input" placeholder="Поиск по сайту..." type="text">
+                        <button type="submit">
+                            <span>🔍</span>
+                            <span>Найти</span>
+                        </button>
+                    </form>
+                    <div id="search-results"></div>
+                </div>
+            </nav>
+
+            <main>
+                <h3 id="annotation">
+                    <span class="change">А</span>
+                    <span class="change">н</span>
+                    <span class="change">н</span>
+                    <span class="change">о</span>
+                    <span class="change">т</span>
+                    <span class="change">а</span>
+                    <span class="change">ц</span>
+                    <span class="change">и</span>
+                    <span class="change">я</span>
+                </h3>
+                <p>
+                    Электронное учебное пособие для студентов при реализации специальностей среднего профессионального образования.
+                </p>
+
+                <h3 id="goal">
+                    <span class="change">Ц</span>
+                    <span class="change">е</span>
+                    <span class="change">л</span>
+                    <span class="change">ь</span>
+                    <span class="change"> </span>
+                    <span class="change">п</span>
+                    <span class="change">о</span>
+                    <span class="change">с</span>
+                    <span class="change">о</span>
+                    <span class="change">б</span>
+                    <span class="change">и</span>
+                    <span class="change">я</span>
+                </h3>
+                <p>
+                    Формирование базовых знаний в области информатики и информационных
+                    технологий.
+                </p>
+
+                <h3 id="tasks">
+                    <span class="change">З</span>
+                    <span class="change">а</span>
+                    <span class="change">д</span>
+                    <span class="change">а</span>
+                    <span class="change">ч</span>
+                    <span class="change">и</span>
+                </h3>
+                <ol>
+                    <li>Изучение информации и способов её обработки.</li>
+                    <li>Освоение аппаратного и программного обеспечения.</li>
+                    <li>Развитие алгоритмического мышления.</li>
+                </ol>
+
+                <h3 id="structure">
+                    <span class="change">С</span>
+                    <span class="change">т</span>
+                    <span class="change">р</span>
+                    <span class="change">у</span>
+                    <span class="change">к</span>
+                    <span class="change">т</span>
+                    <span class="change">у</span>
+                    <span class="change">р</span>
+                    <span class="change">а</span>
+                    <span class="change"> </span>
+                    <span class="change">п</span>
+                    <span class="change">о</span>
+                    <span class="change">с</span>
+                    <span class="change">о</span>
+                    <span class="change">б</span>
+                    <span class="change">и</span>
+                    <span class="change">я</span>
+                </h3>
+                <ol>
+                    <li>Программа дисциплины.</li>
+                    <li>Лекционные материалы.</li>
+                    <li>Практические работы.</li>
+                    <li>Контроль знаний.</li>
+                    <li>Методические указания.</li>
+                </ol>
+
+                <a class="button" href="Темы.html">К первой теме</a>
+            </main>
+        </div>
+
+        <footer>
+            <p>Автор: Липчанская М.-К. В. | "ГСТ" | 2026г. </p>
+        </footer>
+    </div>
+
+    <script>
+    const siteSearchIndex = {
+        'index.html': {
+            title: 'Главная страница',
+            keywords: ['информатика', 'гуковский', 'гст', 'пособие', 
+                      'учебно-методическое', 'аннотация', 'цель', 'задачи', 'структура',
+                      'информационные системы', 'программирование', 'дисциплина', 'студенты',
+                      'обучение', 'образование', 'техникум', 'строительный'],
+            description: 'Учебно-методическое пособие по информатике для студентов Гуковского строительного техникума'
+        },
+        'Программа.html': {
+            title: 'Программа дисциплины',
+            keywords: ['учебный план', 'рабочая программа', 'тематический план', 
+                      'часы', 'лекции', 'практика', 'самостоятельная работа',
+                      'содержание', 'требования', 'компетенции', 'расписание',
+                      'модули', 'разделы', 'темы', 'объем часов', 'аттестация'],
+            description: 'Рабочая программа дисциплины Информатика: содержание, тематический план, требования'
+        },
+        'Темы.html': {
+            title: 'Темы учебных занятий (лекции)',
+            keywords: ['теория', 'конспекты', 'презентации', 'слайды', 
+                      'информация', 'компьютер', 'windows', 'linux', 'ос',
+                      'программы', 'офис', 'word', 'excel', 'access', 'powerpoint',
+                      'базы данных', 'sql', 'сети', 'интернет', 'html', 'css',
+                      'javascript', 'алгоритмы', 'структуры данных', 'программирование',
+                      'моделирование', 'графика', 'мультимедиа'],
+            description: 'Лекционные материалы по информатике: теория, конспекты, презентации по всем темам курса'
+        },
+        'Практика.html': {
+            title: 'Практические работы',
+            keywords: ['задания', 'упражнения', 'лабораторные', 'решения',
+                      'примеры', 'код', 'программирование', 'python',
+                      'алгоритмы', 'блок-схемы', 'паскаль', 'c++', 'java',
+                      'офисные программы', 'word задания', 'excel задачи',
+                      'access базы', 'сети настройка', 'html верстка', 'css стили',
+                      'компас-3d', 'powerpoint', 'paint'],
+            description: 'Практические задания по информатике: лабораторные работы, упражнения, решения'
+        },
+        'Тесты.html': {
+            title: 'Тесты и контроль',
+            keywords: ['тестирование', 'контрольная', 'опрос', 'экзамен',
+                      'вопросы', 'ответы', 'варианты', 'проверка знаний',
+                      'оценивание', 'зачёт', 'экзамен', 'итоговый контроль',
+                      'промежуточная аттестация', 'тестовые задания', 'quiz',
+                      'входной контроль', 'сертификат'],
+            description: 'Тесты для контроля знаний по информатике: вопросы, ответы, варианты заданий'
+        },
+        'Задачи.html': {
+            title: 'Интерактивные задачи',
+            keywords: ['задачи', 'упражнения', 'интерактив', 'двоичный счётчик',
+                      'логические элементы', 'алгоритмы', 'соединение понятий',
+                      'двоичная система', 'логика', 'тренажёр', 'практикум'],
+            description: 'Интерактивные задачи по информатике: двоичный счётчик, логические элементы, соединение понятий'
+        }
+    };
+
+    const synonyms = {
+        'информатика': ['информатика', 'компьютерная наука', 'it', 'айти', 'компьютеры'],
+        'программа': ['программа', 'учебный план', 'курс', 'дисциплина', 'предмет'],
+        'лекции': ['лекции', 'теория', 'конспекты', 'презентации', 'слайды'],
+        'практика': ['практика', 'упражнения', 'лабораторные', 'задания', 'лабы'],
+        'тесты': ['тесты', 'контроль', 'экзамен', 'опрос', 'зачет', 'аттестация'],
+        'методичка': ['методичка', 'методические указания', 'рекомендации', 'инструкции'],
+        'windows': ['windows', 'операционная система', 'ос', 'виндовс', 'windows 10', 'windows 11'],
+        'python': ['python', 'программирование', 'язык программирования', 'питон', 'код'],
+        'базы данных': ['базы данных', 'бд', 'sql', 'данные', 'access', 'mysql'],
+        'html': ['html', 'верстка', 'веб', 'сайт', 'интернет'],
+        'css': ['css', 'стили', 'оформление', 'дизайн'],
+        'задачи': ['задачи', 'упражнения', 'задания', 'примеры', 'тренажёр'],
+        'логика': ['логика', 'логические элементы', 'и', 'или', 'не']
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (!searchTerm) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            searchResults.innerHTML = '';
+            searchResults.style.display = 'block';
+            
+            let foundResults = [];
+            
+            for (const [page, data] of Object.entries(siteSearchIndex)) {
+                let relevance = 0;
+                let matchedKeywords = [];
+                
+                data.keywords.forEach(keyword => {
+                    if (keyword.includes(searchTerm) || searchTerm.includes(keyword)) {
+                        relevance += 3;
+                        if (!matchedKeywords.includes(keyword)) {
+                            matchedKeywords.push(keyword);
+                        }
+                    }
+                });
+                
+                if (data.title.toLowerCase().includes(searchTerm)) {
+                    relevance += 5;
+                }
+
+                if (data.description.toLowerCase().includes(searchTerm)) {
+                    relevance += 2;
+                }
+                
+                for (const [mainTerm, synList] of Object.entries(synonyms)) {
+                    if (synList.some(syn => syn.includes(searchTerm) || searchTerm.includes(syn))) {
+                        if (data.keywords.some(kw => kw.includes(mainTerm))) {
+                            relevance += 2;
+                            if (!matchedKeywords.includes(mainTerm)) {
+                                matchedKeywords.push(mainTerm + ' (синоним)');
+                            }
+                        }
+                    }
+                }
+                
+                if (relevance > 0) {
+                    foundResults.push({
+                        page: page,
+                        title: data.title,
+                        description: data.description,
+                        relevance: relevance,
+                        matchedKeywords: matchedKeywords.slice(0, 4)
+                    });
+                }
+            }
+            
+            foundResults.sort((a, b) => b.relevance - a.relevance);
+            
+            if (foundResults.length > 0) {
+                foundResults.forEach(result => {
+                    const resultItem = document.createElement('div');
+                    resultItem.style.padding = '12px';
+                    resultItem.style.borderBottom = '1px solid #eee';
+                    resultItem.style.cursor = 'pointer';
+                    resultItem.style.transition = 'background 0.2s';
+                    
+                    let relevanceColor = '#888';
+                    if (result.relevance >= 8) relevanceColor = '#008080';
+                    else if (result.relevance >= 5) relevanceColor = '#66CDAA';
+                    else if (result.relevance >= 3) relevanceColor = '#20B2AA';
+                    
+                    resultItem.innerHTML = `
+                        <div style="font-weight: bold; color: #008080; margin-bottom: 4px; font-size: 16px;">
+                            ${result.title}
+                        </div>
+                        <div style="font-size: 14px; color: #666; margin-bottom: 6px;">
+                            ${result.description}
+                        </div>
+                        <div style="font-size: 12px; color: #888; margin-bottom: 4px;">
+                            <strong>Ключевые слова:</strong> ${result.matchedKeywords.join(', ')}
+                        </div>
+                        <div style="font-size: 11px; color: ${relevanceColor}; margin-top: 4px;">
+                            <strong>Релевантность:</strong> ${result.relevance}/10
+                        </div>
+                    `;
+                    
+                    resultItem.onmouseenter = function() {
+                        this.style.background = '#f0f8ff';
+                        this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
+                    };
+                    resultItem.onmouseleave = function() {
+                        this.style.background = '';
+                        this.style.boxShadow = '';
+                    };
+                    
+                    resultItem.onclick = function() {
+                        window.location.href = result.page;
+                    };
+                    
+                    searchResults.appendChild(resultItem);
+                });
+                
+                const stats = document.createElement('div');
+                stats.style.padding = '10px';
+                stats.style.fontSize = '13px';
+                stats.style.color = '#666';
+                stats.style.borderTop = '1px solid #eee';
+                stats.style.marginTop = '10px';
+                stats.style.background = '#f9f9f9';
+                stats.style.borderRadius = '0 0 4px 4px';
+                stats.innerHTML = `<strong>Найдено:</strong> ${foundResults.length} страниц по запросу "${searchTerm}"`;
+                searchResults.appendChild(stats);
+                
+            } else {
+                searchResults.innerHTML = `
+                    <div style="padding: 30px; text-align: center;">
+                        <div style="font-size: 32px; color: #ccc; margin-bottom: 15px;">🔍</div>
+                        <div style="font-weight: bold; color: #666; margin-bottom: 10px; font-size: 16px;">
+                            По запросу "${searchTerm}" ничего не найдено
+                        </div>
+                        <div style="color: #888; font-size: 14px; margin-bottom: 15px;">
+                            Попробуйте изменить формулировку запроса
+                        </div>
+                    </div>
+                `;
+            }
+        });
+        
+        document.addEventListener('click', function(e) {
+            if (!searchForm.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
+        
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                searchResults.style.display = 'none';
+                this.value = '';
+            }
+        });
+        
+        let searchTimeout;
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            const term = this.value.trim();
+            
+            if (term.length >= 2) {
+                searchTimeout = setTimeout(() => {
+                    searchForm.dispatchEvent(new Event('submit'));
+                }, 300);
+            } else {
+                searchResults.style.display = 'none';
+            }
+        });
+    });
+    </script>
+</body>
+</html>
